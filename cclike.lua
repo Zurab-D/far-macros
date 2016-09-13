@@ -1,5 +1,5 @@
 -----------------------------------------------------------------------------
--- raVen's c&c like input 20160913-02
+-- raVen's c&c like input 20160913-01
 -----------------------------------------------------------------------------
 local cccolor = 0xcf;
 local pattern = '[%a%d%p%w%s]';
@@ -9,7 +9,7 @@ Event {
  group = 'EditorInput';
  description = 'command and conquer like input';
  action = function(param)
-  if(param.EventType ~= 1) then
+  if(param.EventType ~= far.Flags.KEY_EVENT) then
    return;
   end;
   if(param.UnicodeChar:match(pattern) == nil) then
