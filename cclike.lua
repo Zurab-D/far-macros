@@ -33,8 +33,8 @@ Event {
    (event==far.Flags.EE_REDRAW) and
    (cx ~= -1) and (cy ~= -1)
   ) then
-   editor.AddColor(eid, cy, cx, cx, far.Flags.ECF_AUTODELETE, cccolor)
-   cx, cy = -1, -1
+   editor.AddColor(eid, cy, cx, cx, far.Flags.ECF_AUTODELETE, cccolor);
+   cx, cy = -1, -1;
   end;
  end;
 }
