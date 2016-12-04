@@ -1,5 +1,5 @@
 -----------------------------------------------------------------------------
--- raVen's smartpad 20161022-01
+-- raVen's smartpad 20161204-01
 -----------------------------------------------------------------------------
 Macro {
  area = "Editor Viewer Shell"; key="AltQ"; flags=""; action = function()
@@ -26,7 +26,7 @@ Macro {
    local res = editor.SetPosition(
     ei.EditorID,
     ei.TotalLines,
-    nil,
+    1,
     nil,
     nil,
     nil,
@@ -43,9 +43,15 @@ Macro {
     local line_begin = '—————————————< '
     if(line:len() > 0) then
      if(not line:match(line_begin)) then
+      for last_line = ei.TotalLines - 1, ei.TotalLines do
+       if(editor.GetString(ei.EditorID, last_line).StringText:len() > 0) then
+        Keys("End");
+        editor.InsertString(ei.EditorID);
+       end;
+      end;
       editor.InsertText(
        ei.EditorID,
-       os.date('\n' .. line_begin .. '%a %Y/%m/%d %X >——————————————————————————\n')
+       os.date(line_begin .. '%a %Y/%m/%d %X >——————————————————————————\n')
       );
      end;
      break;
